@@ -1,0 +1,9 @@
+<div class="footer wrapper">
+  <nav class="nav">
+    <div>Version:&nbsp;<a href="{{ "/log" | relURL }}">{{ .Site.Params.Version }}</a>&nbsp;|&nbsp;Built with&nbsp;<a
+        href="https://gohugo.io">Hugo</a></div>
+  </nav>
+</div>
+{{- with .Site.Params.Social -}}
+<script>feather.replace()</script>
+{{- end -}}

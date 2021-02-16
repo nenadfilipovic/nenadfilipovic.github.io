@@ -1,0 +1,35 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  {{- $title := ( .Title ) -}}
+  {{- $siteTitle := ( .Site.Title ) -}}
+  {{- if .IsHome -}}
+  <title>{{ $siteTitle }} - {{ .Site.Params.Subtitle }}</title>
+  {{- else -}}
+  <title>{{ $title }} - {{ $siteTitle }}</title>
+  {{- end -}}
+  {{- if .IsPage }}
+  <meta name="description" content="{{ .Summary }}">
+  <meta name="author" content="{{ .Params.Author | default .Site.Params.Author }}">
+  {{ else }}
+  <meta name="description" content="{{ .Site.Params.Description }}">
+  <meta name="author" content="{{ .Site.Params.Author }}">
+  {{ end -}}
+  {{ if or ( .IsHome ) ( .IsPage )}}
+  <link rel="canonical" href="{{ .Permalink}}">
+  {{ end }}
+  <link rel="icon" href="{{"favicon.png" | relURL}}" type="image/png">
+  {{ $style := resources.Get "styles/main.css" | resources.ToCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+  {{ with .OutputFormats.Get "rss" -}}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+  <script src="https://rawcdn.githack.com/nextapps-de/spotlight/0.6.3/dist/spotlight.bundle.js"></script>
+</head>

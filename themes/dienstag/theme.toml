@@ -1,0 +1,19 @@
+name = "Dienstag"
+
+license = "MIT"
+
+licenselink = "LICENSE"
+
+description = "Clean and minimal personal blog and portfolio theme"
+
+homepage = ""
+
+tags = ["minimal", "clean", "blog", "responsive", "personal", "simple", "minimalist", "portfolio"]
+
+features = ["blog", "Clean and minimal", "Responsive", "Social media links", "Syntax highlighting"]
+
+min_version = "0.58.3"
+
+[author]
+  name = "Nenad Filipovic"
+  homepage = "https://github.com/nenadfilipovic"
