@@ -1,0 +1,12 @@
+{
+    "name": "Website",
+    "dockerFile": "Dockerfile",
+    "settings": {
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true,
+        "extensions.ignoreRecommendations": true
+    },
+    "forwardPorts": [
+        1313
+    ],
+}
