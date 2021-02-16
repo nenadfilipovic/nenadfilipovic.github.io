@@ -1,0 +1,71 @@
+baseURL = "https://mydiy.space/"
+
+languageCode = "en-us"
+
+title = "Diy & Code"
+
+theme = "dienstag"
+
+disableHugoGeneratorInject = true
+
+paginate = 5
+
+enableRobotsTXT = true
+
+pygmentsstyle = "github"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+[params]
+Author = "Nenad Filipovic"
+Description = "My web home, place where I will document my diy projects, solving problems in programming, coding mainly in javascript, python and soldering and building diy kits. Also will do a basic reviews of tools I make or buy."
+Subtitle = "Personal blog about [electronics / diy / programming](https://github.com/nenadfilipovic)"
+ExcludedTypes = ["page"]
+Version = 2.21
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 3
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 4
+
+[[params.social]]
+name = "Github"
+icon = "github"
+url = "https://github.com/nenadfilipovic"
+
+[[params.social]]
+name = "Gitlab"
+icon = "gitlab"
+url = "https://gitlab.com/nenadfilipovic"
+
+[[params.social]]
+name = "Email"
+icon = "mail"
+url = "mailto:contact@nenadfilipovic.site"
+
+[[params.social]]
+name = "RSS"
+icon = "rss"
+url = "/index.xml"
+
+[taxonomies]
+   tag = "tags"
+
+[sitemap]
+  ChangeFreq = "daily"
+  Priority = "1"

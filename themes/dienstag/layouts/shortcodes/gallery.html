@@ -1,0 +1,25 @@
+<div class="gallery spotlight-group">
+  {{- with (.Get "dir") -}}
+  {{- $files := readDir (print "/static/" .) }}
+  {{- range $files -}}
+  {{- $thumbext := $.Get "thumb" | default "-thumb" }}
+  {{- $isthumb := .Name | findRE ($thumbext | printf "%s\\.") }}
+  {{- $isimg := lower .Name | findRE "\\.(gif|jpg|jpeg|tiff|png|bmp)" }}
+  {{- if and $isimg (not $isthumb) }}
+  {{- $linkURL := print ($.Get "dir") "/" .Name | relURL }}
+  {{- $thumb := .Name | replaceRE "(\\.)" ($thumbext | printf "%s.") }}
+  {{- $thumbexists := where $files "Name" $thumb }}
+  {{- $thumbURL := print ($.Get "dir") "/" $thumb | relURL }}
+  <div class="box">
+    <div class="frame">
+      <div class="image"
+        style="background-image: url('{{ if $thumbexists }}{{ $thumbURL }}{{ else }}{{ $linkURL }}{{ end }}');">
+      </div>
+      <a class="spotlight" href="{{ $linkURL }}"></a>
+    </div>
+  </div>
+  {{- end }} {{- end }}
+  {{- else -}}
+  {{ .Inner }}
+  {{- end }}
+</div>
