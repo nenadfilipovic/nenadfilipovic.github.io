@@ -11,9 +11,6 @@ jobs:
     steps:
       - name: Checkout GitHub repository
         uses: actions/checkout@v2
-        with:
-          submodules: true
-          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -27,5 +24,5 @@ jobs:
       - name: Deploy website
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          github_token: '${{ secrets.GITHUB_TOKEN }}'
           publish_dir: ./public

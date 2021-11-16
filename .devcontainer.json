@@ -1,12 +1,10 @@
 {
-    "name": "Website",
-    "dockerFile": "Dockerfile",
-    "settings": {
-        "editor.tabSize": 2,
-        "editor.formatOnSave": true,
-        "extensions.ignoreRecommendations": true
-    },
-    "forwardPorts": [
-        1313
-    ],
+  "name": "mydiy.space",
+  "forwardPorts": [1313],
+  "dockerFile": "Dockerfile",
+  "settings": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "extensions.ignoreRecommendations": true
+  }
 }

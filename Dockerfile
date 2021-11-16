@@ -1,29 +1,42 @@
-FROM alpine:latest
+## Base image
+## -------------------------------------------------------------------
 
-ENV HUGO_VERSION='0.58.3'
-ENV HUGO_NAME="hugo_extended_${HUGO_VERSION}_Linux-64bit"
-ENV HUGO_BASE_URL="https://github.com/gohugoio/hugo/releases/download"
-ENV HUGO_URL="${HUGO_BASE_URL}/v${HUGO_VERSION}/${HUGO_NAME}.tar.gz"
-ENV HUGO_CHECKSUM_URL="${HUGO_BASE_URL}/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_checksums.txt"
+FROM debian:bullseye-slim
 
+ENV VERSION='0.58.3'
+ENV CHECKSUM="hugo_${VERSION}_checksums.txt"
+ENV NAME="hugo_extended_${VERSION}_Linux-64bit.tar.gz"
+ENV BASE_URL="https://github.com/gohugoio/hugo/releases/download"
+ENV URL="${BASE_URL}/v${VERSION}/${NAME}"
+ENV CHECKSUM_URL="${BASE_URL}/v${VERSION}/${CHECKSUM}"
+
+## Set working directory.
 WORKDIR /hugo
 
-SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
-
-RUN apk add --no-cache --virtual .build-deps wget && \
-    apk add --no-cache \
+## Install:
+## - git
+## - ssh
+## - wget
+## - ca-certificatess
+RUN apt-get update \
+  && apt-get install --no-install-recommends -qq \
     git \
+    wget \
+    openssh-server \
     ca-certificates \
-    libc6-compat \
-    libstdc++ && \
-    wget --quiet "${HUGO_URL}" && \
-    wget --quiet "${HUGO_CHECKSUM_URL}" && \
-    grep "${HUGO_NAME}.tar.gz" "./hugo_${HUGO_VERSION}_checksums.txt" | sha256sum -c - && \
-    tar -zxvf "${HUGO_NAME}.tar.gz" && \
-    mv ./hugo /usr/bin/hugo && \
-    apk del .build-deps && \
-    rm -rf /hugo
+  && apt-get autoremove -y \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
+## Install hugo.
+RUN wget --quiet "${URL}" && wget --quiet "${CHECKSUM_URL}" \
+  && grep "${NAME}" "./${CHECKSUM}" | sha256sum -c - \
+  && tar -zxvf "${NAME}" \
+  && mv ./hugo /usr/bin/hugo \
+  && rm -rf /hugo
+
+## Set working directory.
 WORKDIR /src
 
+## Set starting directory.
 ENTRYPOINT [ "/usr/bin/hugo" ]

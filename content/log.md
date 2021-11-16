@@ -1,15 +1,16 @@
 ---
-title: "Log"
+title: 'Log'
 date: 2019-10-07T21:51:00+02:00
-type: "page"
+type: 'page'
 ---
 
-* 2020-10-22 - *Added new posts*.
-* 2020-10-14 - *Added new post*.
-* 2020-01-26 - *Added new post*.
-* 2019-12-13 - *Added new post*.
-* 2019-10-10 - *Added new post*.
-* 2019-10-09 - *Changed blog title and done some fixes*.
-* 2019-10-08 - *Changed style of some pages and fixed gallery bug*.
-* 2019-10-07 - *Added new posts and fixed some bugs*.
-* 2019-10-07 - *Website uploaded*.
+- 2021-11-16 - _Rebuild website_.
+- 2020-10-22 - _Added new posts_.
+- 2020-10-14 - _Added new post_.
+- 2020-01-26 - _Added new post_.
+- 2019-12-13 - _Added new post_.
+- 2019-10-10 - _Added new post_.
+- 2019-10-09 - _Changed blog title and done some fixes_.
+- 2019-10-08 - _Changed style of some pages and fixed gallery bug_.
+- 2019-10-07 - _Added new posts and fixed some bugs_.
+- 2019-10-07 - _Website uploaded_.
